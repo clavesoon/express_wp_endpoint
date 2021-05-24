@@ -1,0 +1,176 @@
+[
+    {
+        "id": 717,
+        "parent_id": 0,
+        "status": "pending",
+        "currency": "TWD",
+        "version": "5.2.2",
+        "prices_include_tax": false,
+        "date_created": "2021-05-14T05:56:55",
+        "date_modified": "2021-05-14T05:56:55",
+        "discount_total": "0",
+        "discount_tax": "0",
+        "shipping_total": "0",
+        "shipping_tax": "0",
+        "cart_tax": "0",
+        "total": "1330",
+        "total_tax": "0",
+        "customer_id": 6,
+        "order_key": "wc_order_yK79R1VTRtjlA",
+        "billing": {
+            "first_name": "Sabrina",
+            "last_name": "Boo",
+            "company": "",
+            "address_1": "123 Test Rd.",
+            "address_2": "",
+            "city": "Irvine",
+            "state": "CA",
+            "postcode": "92677",
+            "country": "US",
+            "email": "cmhs0385@gmail.com",
+            "phone": "16193543576"
+        },
+        "shipping": {
+            "first_name": "",
+            "last_name": "",
+            "company": "",
+            "address_1": "",
+            "address_2": "",
+            "city": "",
+            "state": "",
+            "postcode": "",
+            "country": ""
+        },
+        "payment_method": "paymentwall",
+        "payment_method_title": "Kickbate",
+        "transaction_id": "",
+        "customer_ip_address": "218.102.0.63",
+        "customer_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
+        "created_via": "checkout",
+        "customer_note": "",
+        "date_completed": null,
+        "date_paid": null,
+        "cart_hash": "5763cff5918b3573516c620a7fc73bff",
+        "number": "717",
+        "meta_data": [
+            {
+                "id": 5726,
+                "key": "is_vat_exempt",
+                "value": "no"
+            }
+        ],
+        "line_items": [
+            {
+                "id": 9,
+                "name": "Zaff Cast N Play",
+                "product_id": 371,
+                "variation_id": 0,
+                "quantity": 1,
+                "tax_class": "",
+                "subtotal": "500",
+                "subtotal_tax": "0",
+                "total": "500",
+                "total_tax": "0",
+                "taxes": [],
+                "meta_data": [],
+                "sku": "",
+                "price": 500,
+                "parent_name": null
+            },
+            {
+                "id": 10,
+                "name": "Startup Taiwan by Paolo Lising",
+                "product_id": 322,
+                "variation_id": 0,
+                "quantity": 1,
+                "tax_class": "",
+                "subtotal": "750",
+                "subtotal_tax": "0",
+                "total": "750",
+                "total_tax": "0",
+                "taxes": [],
+                "meta_data": [],
+                "sku": "book_001",
+                "price": 750,
+                "parent_name": null
+            },
+            {
+                "id": 11,
+                "name": "Green Paper for Arts & Crafts - Adele's Paper Products - Leaf Green",
+                "product_id": 483,
+                "variation_id": 491,
+                "quantity": 1,
+                "tax_class": "",
+                "subtotal": "40",
+                "subtotal_tax": "0",
+                "total": "40",
+                "total_tax": "0",
+                "taxes": [],
+                "meta_data": [
+                    {
+                        "id": 103,
+                        "key": "pa_color",
+                        "value": "leaf-green",
+                        "display_key": "Color",
+                        "display_value": "Leaf Green"
+                    }
+                ],
+                "sku": "adl-0004",
+                "price": 40,
+                "parent_name": "Green Paper for Arts & Crafts - Adele's Paper Products"
+            },
+            {
+                "id": 12,
+                "name": "Green Paper for Arts & Crafts - Adele's Paper Products - Jade Green",
+                "product_id": 483,
+                "variation_id": 489,
+                "quantity": 1,
+                "tax_class": "",
+                "subtotal": "40",
+                "subtotal_tax": "0",
+                "total": "40",
+                "total_tax": "0",
+                "taxes": [],
+                "meta_data": [
+                    {
+                        "id": 113,
+                        "key": "pa_color",
+                        "value": "jade-green",
+                        "display_key": "Color",
+                        "display_value": "Jade Green"
+                    }
+                ],
+                "sku": "adl-0004",
+                "price": 40,
+                "parent_name": "Green Paper for Arts & Crafts - Adele's Paper Products"
+            }
+        ],
+        "tax_lines": [],
+        "shipping_lines": [],
+        "fee_lines": [],
+        "coupon_lines": [],
+        "refunds": [],
+        "date_created_gmt": "2021-05-14T05:56:55",
+        "date_modified_gmt": "2021-05-14T05:56:55",
+        "date_completed_gmt": null,
+        "date_paid_gmt": null,
+        "currency_symbol": "NT$",
+        "_links": {
+            "self": [
+                {
+                    "href": "https://www.kickbate.com/wp-json/wc/v3/orders/717"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://www.kickbate.com/wp-json/wc/v3/orders"
+                }
+            ],
+            "customer": [
+                {
+                    "href": "https://www.kickbate.com/wp-json/wc/v3/customers/6"
+                }
+            ]
+        }
+    }
+]
