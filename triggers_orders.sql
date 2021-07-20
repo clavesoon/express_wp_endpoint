@@ -16,3 +16,7 @@ IF (NEW.time is null) THEN
 END IF;
 END;;
 DELIMITER ;
+
+SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';
+
+SELECT @@GLOBAL.sql_mode;

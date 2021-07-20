@@ -1,5 +1,4 @@
 // load app using express
-
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
@@ -8,7 +7,7 @@ const createError = require('http-errors')
 
 require('dotenv').config()
 
-const PORT = process.env.PORT || 6119
+const PORT = process.env.PORT || 6000
 
 // home page
 app.get("/", (req, res) => {
@@ -57,31 +56,6 @@ function getConnection() {
 app.post('/f6d2c78b-bf03-4f42-86db-fe9816534a2f', (req, res) => {
     const data = req.body;
 
-    //products bought
-    // const lineItems = data.map((row) => {
-    //     var li = []
-    //     for (var i in row.line_items) {
-    //         // console.log(row.line_items[i].name)
-    //         li.push(row.line_items[i].name)
-    //     }
-    //     return li
-
-    // })
-
-    //create list of data
-    // const inputData = data.map((row) => {
-    //     return [
-    //         row.billing.first_name,
-    //         row.billing.last_name,
-    //         row.TaiwanID,
-    //         lineItems,
-    //         row.billing.email,
-    //         row.currency,
-    //         row.total,
-
-    //     ]
-    // })
-
     const inputData = 
     {
         "fname": data.fname,
@@ -95,14 +69,7 @@ app.post('/f6d2c78b-bf03-4f42-86db-fe9816534a2f', (req, res) => {
         "taiwanid": data.taiwanid
     }
 
-
     console.log(inputData)
-
-    // for (let i =0; i < inputData.length; i++) {
-    //     if (inputData[i] == "") {
-    //         inputData[i] = 0;
-    //     }
-    // }
 
     const queryString = "INSERT INTO orders (name, taiwanid, email, order_details, sales_amount, discount_amount, total_tax, total_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
 
@@ -116,18 +83,6 @@ app.post('/f6d2c78b-bf03-4f42-86db-fe9816534a2f', (req, res) => {
         console.log("Successfully inserted order: " + results.insertId);
         res.end()
     })
-
-
-    // getConnection().query(queryString, [inputData[0][0], inputData[0][1], inputData[0][2], inputData[0][3][0].toString(), inputData[0][4], inputData[0][5], inputData[0][6]], (err, results, fields) => {
-    //     if(err){
-    //         console.log("Failed to insert new order: " + err)
-    //         res.sendStatus(500)
-    //         return
-    //     }
-
-    //     console.log("Successfully inserted order: " + results.insertId);
-    //     res.end()
-    // })
 
 })
 // error handling
