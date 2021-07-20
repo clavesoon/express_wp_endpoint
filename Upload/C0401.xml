@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:GEINV:eInvoiceMessage:C0401:3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Main>
+        <InvoiceNumber>AB12345678</InvoiceNumber>
+        <InvoiceDate>20200707</InvoiceDate>
+        <InvoiceTime>21:27:40</InvoiceTime>
+        <Seller>
+            <Identifier>90766188</Identifier>
+            <Name>EUCT</Name>
+            <Address>No. 502, Section 2nd, Ren'ai Road, Linkou District, New Taipei City</Address>
+            <PersonInCharge></PersonInCharge>
+            <TelephoneNumber></TelephoneNumber>
+            <FacsimileNumber></FacsimileNumber>
+            <EmailAddress></EmailAddress>
+            <CustomerNumber></CustomerNumber>
+            <RoleRemark></RoleRemark>
+        </Seller>
+        <Buyer>
+            <Identifier>00000000</Identifier>
+            <Name>Tom Higgins</Name>
+            <Address></Address>
+            <PersonInCharge></PersonInCharge>
+            <TelephoneNumber></TelephoneNumber>
+            <FacsimileNumber></FacsimileNumber>
+            <EmailAddress></EmailAddress>
+            <CustomerNumber></CustomerNumber>
+            <RoleRemark></RoleRemark>
+        </Buyer>
+        <!-- <CheckNumber></CheckNumber>
+        <BuyerRemark></BuyerRemark>
+        <MainRemark></MainRemark>
+        <CustomsClearanceMark></CustomsClearanceMark>
+        <Category></Category>
+        <RelateNumber></RelateNumber> -->
+        <InvoiceType>07</InvoiceType>
+        <!-- <GroupMark></GroupMark> -->
+        <DonateMark>0</DonateMark>
+        <!-- <CarrierType></CarrierType>
+        <CarrierId1></CarrierId1>
+        <CarrierId2></CarrierId2> -->
+        <PrintMark>Y</PrintMark>
+        <!-- <NPOBAN></NPOBAN> -->
+        <RandomNumber>1234</RandomNumber>
+    </Main>
+    <Details>
+        <ProductItem>
+            <Description>Startup Taiwan by Paolo Lising</Description>
+            <Quantity>1</Quantity>
+            <!-- sku -->
+            <Unit></Unit>
+            <!-- price -->
+            <UnitPrice>750</UnitPrice>
+            <!-- price * quantity -->
+            <Amount>750</Amount>
+            <!-- iterator -->
+            <SequenceNumber>123</SequenceNumber>
+            <Remark></Remark>
+            <RelateNumber></RelateNumber>
+        </ProductItem>
+    </Details>
+    <Amount>
+
+        <SalesAmount>750</SalesAmount>
+        <FreeTaxSalesAmount>0</FreeTaxSalesAmount>
+        <ZeroTaxSalesAmount>750</ZeroTaxSalesAmount>
+        <!-- values taxable:1; , 0 tax rate:2; tax free:3; taxable special rates:4; mixture of previous:9 -->
+        <TaxType>1</TaxType>
+        <!-- index of constants -->
+        <TaxRate>0.05</TaxRate>
+        <!-- taxRate * SalesAmount -->
+        <TaxAmount>38</TaxAmount>
+        <TotalAmount>712</TotalAmount>
+        <!-- <DiscountAmount></DiscountAmount>
+        <OriginalCurrencyAmount></OriginalCurrencyAmount>
+        <ExchangeRate></ExchangeRate> -->
+        <Currency>TWD</Currency>
+    </Amount>
+</Invoice>

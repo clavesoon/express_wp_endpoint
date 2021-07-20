@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="urn:GEINV:eInvoiceMessage:C0401:3.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:GEINV:eInvoiceMessage:C0401:3.2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:include schemaLocation="GenericType_3.2.xsd"/>
+
+<!-- START HERE DEFINITIONS -->
+<xsd:group name="RoleDescriptionType">
+    <xsd:sequence>
+        <xsd:element name="Identifier">
+            <xsd:simpleType>
+                <xsd:restriction base="BAN">
+                    <xsd:minLength value="8"/>
+                    <xsd:maxLength value="10"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="Name">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:minLength value="1"/>
+                    <xsd:maxLength value="60"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="Address" minOccurs="0">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+        
+        <xsd:element name="PersonInCharge" minOccurs="0">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="30"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="TelephoneNumber" minOccurs="0">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="26"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="FacsimileNumber" minOccurs="0">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="26"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="EmailAddress" minOccurs="0">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="80"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="CustomerNumber" minOccurs="0">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="20"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="RoleRemark" minOccurs="0">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="40"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:element>
+    </xsd:sequence>
+</xsd:group>
+
+<xsd:simpleType name="MessageTypeEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:minLength value="5"/>
+        <xsd:maxLength value="5"/>
+        <xsd:enumeration value="A0101"/>
+        <xsd:enumeration value="A0102"/>
+        <xsd:enumeration value="A0201"/>
+        <xsd:enumeration value="A0202"/>
+        <xsd:enumeration value="A0301"/>
+        <xsd:enumeration value="A0302"/>
+        <xsd:enumeration value="A0401"/>
+        <xsd:enumeration value="A0501"/>
+        <xsd:enumeration value="A0601"/>
+        <xsd:enumeration value="A1101"/>
+        <xsd:enumeration value="A1401"/>
+        <xsd:enumeration value="B0101"/>
+        <xsd:enumeration value="B0102"/>
+        <xsd:enumeration value="B0201"/>
+        <xsd:enumeration value="B0202"/>
+        <xsd:enumeration value="B0401"/>
+        <xsd:enumeration value="B0501"/>
+        <xsd:enumeration value="B1101"/>
+        <xsd:enumeration value="B1401"/>
+        <xsd:enumeration value="C0401"/>
+        <xsd:enumeration value="C0501"/>
+        <xsd:enumeration value="C0701"/>
+        <xsd:enumeration value="D0401"/>
+        <xsd:enumeration value="D0501"/>
+        <xsd:enumeration value="E0401"/>
+        <xsd:enumeration value="E0402"/>
+        <xsd:enumeration value="E0501"/>
+        <!-- A0101. Invoice -->
+        <!-- A0102. InvoiceConfirm -->
+        <!-- A0201. CancelInvoice -->
+        <!-- A0202. CancelInvoiceConfirm -->
+        <!-- A0301. RejectInvoice -->
+        <!-- A0302. RejectInvoiceConfirm -->
+        <!-- A0401. Invoice Platform -->
+        <!-- A0501. CencelInvoice Platform -->
+        <!-- A0601. RejectInvoice Platform -->
+        <!-- A1101. Invoice (steel) -->
+        <!-- A1401. Invoice Platform (steel) -->
+        <!-- B0101. Allowance -->
+        <!-- B0102. AllowanceConfirm -->
+        <!-- B0201. CancelAllowance -->
+        <!-- B0202. CancelAllowanceConfirm -->
+        <!-- B0401. Allowance Platform -->
+        <!-- B0501. CancelAllowance Platform -->
+        <!-- B1101. Allowance (steel) -->
+        <!-- B1401. Allowance Platform (steel) -->
+        <!-- C0401. B2C Invoice -->
+        <!-- C0501. B2C CancelInvoice -->
+        <!-- C0701. B2C VoidInvoice -->
+        <!-- D0401. B2C Allowance -->
+        <!-- D0501. B2C CancelAllowance -->
+        <!-- E0401. BranchTrack -->
+        <!-- E0402. BranchTrackBlank -->
+        <!-- E0501. InvoiceAssignNo -->
+    </xsd:restriction>
+</xsd:simpleType>
+
+
+<xsd:simpleType name="InvoiceNumberType">
+    <xsd:restriction base="xsd:string">
+        <xsd:minLength value="10"/>
+        <xsd:maxLength value="10"/>
+        <xsd:pattern value="[A-Z]{2}\d{8}"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="AllowanceNumberType">
+    <xsd:restriction base="xsd:string">
+        <xsd:minLength value="1"/>
+        <xsd:maxLength value="16"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="AllowanceTypeEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:minLength value="1"/>
+        <xsd:maxLength value="1"/>
+        <xsd:enumeration value="1"/>
+        <xsd:enumeration value="2"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="BAN">
+    <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="10"/>
+        <xsd:minLength value="0"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!-- BuyerRemark (buyer remark) -->
+<xsd:simpleType name="BuyerRemarkEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="1"/>
+        <xsd:enumeration value="1"/>
+        <xsd:enumeration value="2"/>
+        <xsd:enumeration value="3"/>
+        <xsd:enumeration value="4"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!-- CustomsClearanceMark (customs clearance mark) -->
+<xsd:simpleType name="CustomsClearanceMarkEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="1"/>
+        <xsd:enumeration value="1"/>
+        <xsd:enumeration value="2"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!-- InvoiceType (invoice type) -->
+<xsd:simpleType name="InvoiceTypeEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="2"/>
+        <xsd:minLength value="2"/>
+        <xsd:enumeration value="01"/>
+        <xsd:enumeration value="02"/>
+        <xsd:enumeration value="03"/>
+        <xsd:enumeration value="04"/>
+        <xsd:enumeration value="05"/>
+        <xsd:enumeration value="06"/>
+        <xsd:enumeration value="07"/>
+        <xsd:enumeration value="08"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!-- DonateMark (donation mark) -->
+<xsd:simpleType name="DonateMarkEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="1"/>
+        <xsd:minLength value="1"/>
+        <xsd:enumeration value="0"/>
+        <xsd:enumeration value="1"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!-- TaxType (tax type) -->
+<xsd:simpleType name="TaxTypeEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="1"/>
+        <xsd:minLength value="1"/>
+        <xsd:enumeration value="1"/>
+        <xsd:enumeration value="2"/>
+        <xsd:enumeration value="3"/>
+        <xsd:enumeration value="4"/>
+        <xsd:enumeration value="9"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!-- carrier type number -->
+<xsd:simpleType name="CarrierTypeEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="6"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<!-- ISO 4217 Currency Code List -->
+<xsd:simpleType name="CurrencyCodeEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:minLength value="3"/>
+        <xsd:maxLength value="3"/>
+        <xsd:enumeration value="AED"/>
+        <xsd:enumeration value="AFN"/>
+        <xsd:enumeration value="ALL"/>
+        <xsd:enumeration value="AMD"/>
+        <xsd:enumeration value="ANG"/>
+        <xsd:enumeration value="AOA"/>
+        <xsd:enumeration value="ARS"/>
+        <xsd:enumeration value="AUD"/>
+        <xsd:enumeration value="AWG"/>
+        <xsd:enumeration value="AZN"/>
+        <xsd:enumeration value="BAM"/>
+        <xsd:enumeration value="BBD"/>
+        <xsd:enumeration value="BDT"/>
+        <xsd:enumeration value="BGN"/>
+        <xsd:enumeration value="BHD"/>
+        <xsd:enumeration value="BIF"/>
+        <xsd:enumeration value="BMD"/>
+        <xsd:enumeration value="BND"/>
+        <xsd:enumeration value="BOB"/>
+        <xsd:enumeration value="BRL"/>
+        <xsd:enumeration value="BSD"/>
+        <xsd:enumeration value="BTN"/>
+        <xsd:enumeration value="BWP"/>
+        <xsd:enumeration value="BYR"/>
+        <xsd:enumeration value="BZD"/>
+        <xsd:enumeration value="CAD"/>
+        <xsd:enumeration value="CDF"/>
+        <xsd:enumeration value="CHF"/>
+        <xsd:enumeration value="CLP"/>
+        <xsd:enumeration value="CNY"/>
+        <xsd:enumeration value="COP"/>
+        <xsd:enumeration value="CRC"/>
+        <xsd:enumeration value="CUP"/>
+        <xsd:enumeration value="CVE"/>
+        <xsd:enumeration value="CYP"/>
+        <xsd:enumeration value="CZK"/>
+        <xsd:enumeration value="DJF"/>
+        <xsd:enumeration value="DKK"/>
+        <xsd:enumeration value="DOP"/>
+        <xsd:enumeration value="DZD"/>
+        <xsd:enumeration value="EGP"/>
+        <xsd:enumeration value="ERN"/>
+        <xsd:enumeration value="ETB"/>
+        <xsd:enumeration value="EUR"/>
+        <xsd:enumeration value="FJD"/>
+        <xsd:enumeration value="FKP"/>
+        <xsd:enumeration value="GBP"/>
+        <xsd:enumeration value="GEL"/>
+        <xsd:enumeration value="GGP"/>
+        <xsd:enumeration value="GHS"/>
+        <xsd:enumeration value="GIP"/>
+        <xsd:enumeration value="GMD"/>
+        <xsd:enumeration value="GNF"/>
+        <xsd:enumeration value="GTQ"/>
+        <xsd:enumeration value="GYD"/>
+        <xsd:enumeration value="HKD"/>
+        <xsd:enumeration value="HNL"/>
+        <xsd:enumeration value="HRK"/>
+        <xsd:enumeration value="HTG"/>
+        <xsd:enumeration value="HUF"/>
+        <xsd:enumeration value="IDR"/>
+        <xsd:enumeration value="ILS"/>
+        <xsd:enumeration value="IMP"/>
+        <xsd:enumeration value="INR"/>
+        <xsd:enumeration value="IQD"/>
+        <xsd:enumeration value="IRR"/>
+        <xsd:enumeration value="ISK"/>
+        <xsd:enumeration value="JEP"/>
+        <xsd:enumeration value="JMD"/>
+        <xsd:enumeration value="JOD"/>
+        <xsd:enumeration value="JPY"/>
+        <xsd:enumeration value="KES"/>
+        <xsd:enumeration value="KGS"/>
+        <xsd:enumeration value="KHR"/>
+        <xsd:enumeration value="KMF"/>
+        <xsd:enumeration value="KPW"/>
+        <xsd:enumeration value="KRW"/>
+        <xsd:enumeration value="KWD"/>
+        <xsd:enumeration value="KYD"/>
+        <xsd:enumeration value="KZT"/>
+        <xsd:enumeration value="LAK"/>
+        <xsd:enumeration value="LBP"/>
+        <xsd:enumeration value="LKR"/>
+        <xsd:enumeration value="LRD"/>
+        <xsd:enumeration value="LSL"/>
+        <xsd:enumeration value="LTL"/>
+        <xsd:enumeration value="LVL"/>
+        <xsd:enumeration value="LYD"/>
+        <xsd:enumeration value="MAD"/>
+        <xsd:enumeration value="MDL"/>
+        <xsd:enumeration value="MGA"/>
+        <xsd:enumeration value="MKD"/>
+        <xsd:enumeration value="MMK"/>
+        <xsd:enumeration value="MNT"/>
+        <xsd:enumeration value="MOP"/>
+        <xsd:enumeration value="MRO"/>
+        <xsd:enumeration value="MTL"/>
+        <xsd:enumeration value="MUR"/>
+        <xsd:enumeration value="MVR"/>
+        <xsd:enumeration value="MWK"/>
+        <xsd:enumeration value="MXN"/>
+        <xsd:enumeration value="MYR"/>
+        <xsd:enumeration value="MZN"/>
+        <xsd:enumeration value="NAD"/>
+        <xsd:enumeration value="NGN"/>
+        <xsd:enumeration value="NIO"/>
+        <xsd:enumeration value="NOK"/>
+        <xsd:enumeration value="NPR"/>
+        <xsd:enumeration value="NZD"/>
+        <xsd:enumeration value="OMR"/>
+        <xsd:enumeration value="PAB"/>
+        <xsd:enumeration value="PEN"/>
+        <xsd:enumeration value="PGK"/>
+        <xsd:enumeration value="PHP"/>
+        <xsd:enumeration value="PKR"/>
+        <xsd:enumeration value="PLN"/>
+        <xsd:enumeration value="PYG"/>
+        <xsd:enumeration value="QAR"/>
+        <xsd:enumeration value="RON"/>
+        <xsd:enumeration value="RSD"/>
+        <xsd:enumeration value="RUB"/>
+        <xsd:enumeration value="RWF"/>
+        <xsd:enumeration value="SAR"/>
+        <xsd:enumeration value="SBD"/>
+        <xsd:enumeration value="SCR"/>
+        <xsd:enumeration value="SDG"/>
+        <xsd:enumeration value="SEK"/>
+        <xsd:enumeration value="SGD"/>
+        <xsd:enumeration value="SHP"/>
+        <xsd:enumeration value="SLL"/>
+        <xsd:enumeration value="SOS"/>
+        <xsd:enumeration value="SPL"/>
+        <xsd:enumeration value="SRD"/>
+        <xsd:enumeration value="STD"/>
+        <xsd:enumeration value="SVC"/>
+        <xsd:enumeration value="SYP"/>
+        <xsd:enumeration value="SZL"/>
+        <xsd:enumeration value="THB"/>
+        <xsd:enumeration value="TJS"/>
+        <xsd:enumeration value="TMM"/>
+        <xsd:enumeration value="TND"/>
+        <xsd:enumeration value="TOP"/>
+        <xsd:enumeration value="TRY"/>
+        <xsd:enumeration value="TTD"/>
+        <xsd:enumeration value="TVD"/>
+        <xsd:enumeration value="TWD"/>
+        <xsd:enumeration value="TZS"/>
+        <xsd:enumeration value="UAH"/>
+        <xsd:enumeration value="UGX"/>
+        <xsd:enumeration value="USD"/>
+        <xsd:enumeration value="UYU"/>
+        <xsd:enumeration value="UZS"/>
+        <xsd:enumeration value="VEB"/>
+        <xsd:enumeration value="VEF"/>
+        <xsd:enumeration value="VND"/>
+        <xsd:enumeration value="VUV"/>
+        <xsd:enumeration value="WST"/>
+        <xsd:enumeration value="XAF"/>
+        <xsd:enumeration value="XAG"/>
+        <xsd:enumeration value="XAU"/>
+        <xsd:enumeration value="XCD"/>
+        <xsd:enumeration value="XDR"/>
+        <xsd:enumeration value="XOF"/>
+        <xsd:enumeration value="XPD"/>
+        <xsd:enumeration value="XPF"/>
+        <xsd:enumeration value="XPT"/>
+        <xsd:enumeration value="YER"/>
+        <xsd:enumeration value="ZAR"/>
+        <xsd:enumeration value="ZMK"/>
+        <xsd:enumeration value="ZWD"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="DateType">
+    <xsd:restriction base="xsd:string">
+        <xsd:pattern value="[0-9][0-9][0-9][0-9]((0[1-9]|1[0-2]))((0[1-9]|[1-2][0-9])|(3[0-1]))"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="TimeType">
+    <xsd:restriction base="xsd:time"/>
+</xsd:simpleType>
+
+<!-- BondedAreaConfirm (indication that buyer is eligible for zero tax rate) -->
+<xsd:simpleType name="BondedAreaEnum">
+    <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="1"/>
+        <xsd:minLength value="1"/>
+        <xsd:enumeration value="1"/>
+        <xsd:enumeration value="2"/>
+        <xsd:enumeration value="3"/>
+    </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:complexType name="PartyInfoType">
+    <xsd:sequence>
+        <xsd:element name="PartyId" type="xsd:string"/>
+        <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="RoutingInfoType">
+    <xsd:sequence>
+        <xsd:element name="RoutingId" type="xsd:string"/>
+        <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<!-- END HERE -->
+    <!-- Invoice C0401-->
+    <xsd:element name="Invoice">
+        <xsd:complexType>
+            <xsd:sequence>
+                <!-- Main -->
+                <xsd:element name="Main" type="Main"/>
+                <!-- Details -->
+                <xsd:element name="Details" type="Details"/>
+                <!-- Amount -->
+                <xsd:element name="Amount" type="Amount"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Main -->
+    <xsd:complexType name="Main">
+        <xsd:sequence>
+            <!-- InvoiceNumber -->
+            <xsd:element name="InvoiceNumber" type="InvoiceNumberType"/>
+
+            <!-- InvoiceDate -->
+            <xsd:element name="InvoiceDate" type="DateType"/>
+
+            <!-- InvoiceTime -->
+            <xsd:element name="InvoiceTime" type="TimeType"/>
+
+            <!-- Seller -->
+            <xsd:element name="Seller">
+                <xsd:complexType mixed="false">
+                    <xsd:group ref="RoleDescriptionType"/>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- Buyer -->
+            <xsd:element name="Buyer">
+                <xsd:complexType mixed="false">
+                    <xsd:group ref="RoleDescriptionType"/>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- Optional CheckNumber -->
+            <xsd:element name="CheckNumber" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="10"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- Optional BuyerRemark -->
+            <xsd:element name="BuyerRemark" type="BuyerRemarkEnum" minOccurs="0"/>
+
+            <!-- Optional MainRemark -->
+            <xsd:element name="MainRemark" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="200"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- Optional CustomsClearanceMark -->
+            <xsd:element name="CustomsClearanceMark" type="CustomsClearanceMarkEnum" minOccurs="0"/>
+
+            <!-- Optional TaxCenter -->
+            <xsd:element name="TaxCenter" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="40"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- Optional PermitDate -->
+            <xsd:element name="PermitDate" type="DateType" minOccurs="0"/>
+
+            <!-- Optional PermitWord -->
+            <xsd:element name="PermitWord" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string" >
+                        <xsd:maxLength value="40"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- Optional PermitNumber -->
+            <xsd:element name="PermitNumber" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="20"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- Optional Category -->
+            <xsd:element name="Category" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="2"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- Optional RelateNumber -->
+            <xsd:element name="RelateNumber" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="20"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- InvoiceType -->
+            <xsd:element name="InvoiceType" type="InvoiceTypeEnum"/>
+
+            <!-- Optional GroupMark -->
+            <xsd:element name="GroupMark" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="[*]"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- DonateMark -->
+            <xsd:element name="DonateMark" type="DonateMarkEnum"/>
+
+            <!-- Optional CarrierType -->
+            <xsd:element name="CarrierType" type="CarrierTypeEnum" minOccurs="0"/>
+
+            <!-- Optional CarrierId1 -->
+            <xsd:element name="CarrierId1" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="64"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- Optional CarrierId2 -->
+            <xsd:element name="CarrierId2" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="64"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- PrintMark -->
+            <xsd:element name="PrintMark">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:length value="1"/>
+                        <xsd:pattern value="[YN]"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <!-- InvoiceDonateObject -->
+            <xsd:element name="NPOBAN" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="10"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- Invoice Random Number -->
+            <xsd:element name="RandomNumber">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="4"/>
+                        <xsd:pattern value="[0-9][0-9][0-9][0-9]|AAAA"/>
+                        <!-- <xsd:pattern value="[0-9,A][0-9,A][0-9,A][0-9,A]"/>2014.3.21 MiGv3.1.1修改-->
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Details -->
+    <xsd:complexType name="Details">
+        <xsd:sequence>
+            <xsd:element name="ProductItem" minOccurs="1" maxOccurs="999">
+                <xsd:complexType>
+                    <xsd:sequence>
+
+                    <!-- Description -->
+                    <xsd:element name="Description">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:maxLength value="256"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:element>
+
+                    <!-- Quantity -->
+                    <xsd:element name="Quantity">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:decimal">
+                                <xsd:totalDigits value="20"/>
+                                <xsd:fractionDigits value="7"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:element>
+
+                    <!-- Unit -->
+                    <xsd:element name="Unit" minOccurs="0">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:maxLength value="6"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:element>
+
+                    <!-- UnitPrice -->
+                    <xsd:element name="UnitPrice">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:decimal">
+                                <xsd:totalDigits value="20"/>
+                                <xsd:fractionDigits value="7"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:element>
+
+                    <!-- Amount -->
+                    <xsd:element name="Amount">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:decimal">
+                                <xsd:totalDigits value="20"/>
+                                <xsd:fractionDigits value="7"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:element>
+
+                    <!-- SequenceNumber -->
+                    <xsd:element name="SequenceNumber">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:element>
+
+                    <!-- Remark -->
+                    <xsd:element name="Remark" minOccurs="0">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:maxLength value="40"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:element>
+
+                    <!-- RelateNumber -->
+                    <xsd:element name="RelateNumber" minOccurs="0">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:maxLength value="20"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:element>
+
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Amount -->
+    <xsd:complexType name="Amount">
+        <xsd:sequence>
+        
+            <!-- SalesAmount -->
+            <xsd:element name="SalesAmount">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="20"/>
+                        <xsd:fractionDigits value="7"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- FreeTaxSalesAmount -->
+            <xsd:element name="FreeTaxSalesAmount">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="20"/>
+                        <xsd:fractionDigits value="7"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- ZeroTaxSalesAmount -->
+            <xsd:element name="ZeroTaxSalesAmount">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="20"/>
+                        <xsd:fractionDigits value="7"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- TaxType -->
+            <xsd:element name="TaxType" type="TaxTypeEnum"/>
+
+            <!-- TaxRate -->
+            <xsd:element name="TaxRate">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="6"/>
+                        <xsd:fractionDigits value="4"/>
+                        <xsd:minInclusive value="0"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- TaxAmount -->
+            <xsd:element name="TaxAmount">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="20"/>
+                        <xsd:fractionDigits value="7"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- TotalAmount -->
+            <xsd:element name="TotalAmount">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="20"/>
+                        <xsd:fractionDigits value="7"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- DiscountAmount -->
+            <xsd:element name="DiscountAmount" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="20"/>
+                        <xsd:fractionDigits value="7"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- OriginalCurrencyAmount -->
+            <xsd:element name="OriginalCurrencyAmount" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="20"/>
+                        <xsd:fractionDigits value="7"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+
+            <!-- ExchangeRate -->
+            <xsd:element name="ExchangeRate" minOccurs="0">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:decimal">
+                        <xsd:totalDigits value="13"/>
+                        <xsd:fractionDigits value="4"/>
+                        <xsd:minInclusive value="0"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            
+            <!-- Currency -->
+            <xsd:element name="Currency" type="CurrencyCodeEnum" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
